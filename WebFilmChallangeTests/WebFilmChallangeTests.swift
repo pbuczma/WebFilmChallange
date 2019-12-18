@@ -31,4 +31,128 @@ class WebFilmChallangeTests: XCTestCase {
         }
     }
 
+    func testURLHelperNowPalying(){
+        
+        
+        let page = 2
+        
+        let url = URLHelper.urlForNowPalying(page: page)
+        
+        if url != nil {
+            print(url!)
+        }
+        
+    }
+    
+    
+    func testURLHelperSearchMovie(){
+        
+        let query = "odys e"
+        
+        let url = URLHelper.searchMovie(query: query, page : 2)
+        
+        if url != nil {
+            print(url!)
+        }
+        
+    }
+
+    
+    func testWebFilmGetNowPlayingFilm(){
+        
+        
+        
+        let webFilmProxy = WebFilmProxy(urlSession: getURLSession() )
+        
+        var webFilm: [WebFilm] = []
+        var error: Error?
+        
+        for i in 0...75{
+        
+            print("processing page: \(i)")
+            let expectation = self.expectation(description: "testGetNowPlayingFilm")
+            
+            webFilmProxy.nextNowPlayingFilm( completion: { ( _webFilm, _error) in
+            
+                webFilm =  _webFilm
+                error = _error
+                
+                expectation.fulfill()
+            })
+        
+            waitForExpectations(timeout: 15, handler: nil)
+            print("count: \(webFilm.count)")
+            /*for film in webFilm{
+                print(film.title, film.backdropPath)
+            }*/
+            
+            XCTAssertNil(error)
+            if i < 73{
+                XCTAssertGreaterThan(webFilm.count, 0)
+            }else{
+                XCTAssertEqual(webFilm.count, 0)
+            }
+            
+        }
+        
+    
+    }
+    
+    
+    func testNextSearchMovie(){
+        
+        
+        
+        let webFilmProxy = WebFilmProxy( urlSession: getURLSession() )
+        
+        var webFilm: [WebFilm] = []
+        var error: Error?
+        
+        let query = "Turtle Odyssey"  //"odyssey"
+        
+        for i in 0...20 {
+        
+            let expectation = self.expectation(description: "testGetSearchMovie")
+            webFilmProxy.nextSearchMovieFilm(query: query) { (_webFilm, _error) in
+                
+                webFilm = _webFilm
+                error = _error
+                expectation.fulfill()
+            }
+            
+            waitForExpectations(timeout: 15, handler: nil)
+            print("count: \(webFilm.count)")
+            XCTAssertNil(error)
+            
+            /*for film in webFilm {
+                print( film.title )
+            }*/
+            
+            
+            if i < 1{
+                XCTAssertGreaterThan(webFilm.count, 0)
+            }else{
+                XCTAssertEqual(webFilm.count, 0)
+            }
+           
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    private func getURLSession() -> URLSession{
+        
+        let defaultSession = URLSession(configuration: .default)
+        
+        return defaultSession
+        
+    }
+    
+    
+    
+    
 }

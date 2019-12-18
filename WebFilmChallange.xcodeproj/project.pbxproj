@@ -8,13 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		F203311B23A7AD0300F24BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203311A23A7AD0300F24BD5 /* AppDelegate.swift */; };
-		F203311D23A7AD0300F24BD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203311C23A7AD0300F24BD5 /* SceneDelegate.swift */; };
 		F203311F23A7AD0300F24BD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203311E23A7AD0300F24BD5 /* ViewController.swift */; };
 		F203312223A7AD0300F24BD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F203312023A7AD0300F24BD5 /* Main.storyboard */; };
 		F203312423A7AD0300F24BD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F203312323A7AD0300F24BD5 /* Assets.xcassets */; };
 		F203312723A7AD0300F24BD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F203312523A7AD0300F24BD5 /* LaunchScreen.storyboard */; };
 		F203313223A7AD0300F24BD5 /* WebFilmChallangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203313123A7AD0300F24BD5 /* WebFilmChallangeTests.swift */; };
 		F203313D23A7AD0300F24BD5 /* WebFilmChallangeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203313C23A7AD0300F24BD5 /* WebFilmChallangeUITests.swift */; };
+		F203314C23A7ADFC00F24BD5 /* WebFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203314B23A7ADFC00F24BD5 /* WebFilm.swift */; };
+		F203314E23A7C34C00F24BD5 /* WebFilmProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203314D23A7C34C00F24BD5 /* WebFilmProxy.swift */; };
+		F203315123A7C95200F24BD5 /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203315023A7C95200F24BD5 /* URLHelper.swift */; };
+		F203315323A7C97600F24BD5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203315223A7C97600F24BD5 /* AppConstants.swift */; };
+		F203315423AA13F500F24BD5 /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203315023A7C95200F24BD5 /* URLHelper.swift */; };
+		F203315523AA141D00F24BD5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203315223A7C97600F24BD5 /* AppConstants.swift */; };
+		F203315723AA142600F24BD5 /* WebFilmProxy.swift in Resources */ = {isa = PBXBuildFile; fileRef = F203314D23A7C34C00F24BD5 /* WebFilmProxy.swift */; };
+		F2D8080C23AA6A21005523D5 /* FilmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8080B23AA6A21005523D5 /* FilmListViewController.swift */; };
+		F2D8081023AA6A74005523D5 /* FilmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8080F23AA6A74005523D5 /* FilmListView.swift */; };
+		F2D8081723AA7550005523D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2D8081523AA7550005523D5 /* Localizable.strings */; };
+		F2D8081923AA75A7005523D5 /* FilmListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8081823AA75A7005523D5 /* FilmListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +47,6 @@
 /* Begin PBXFileReference section */
 		F203311723A7AD0300F24BD5 /* WebFilmChallange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebFilmChallange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F203311A23A7AD0300F24BD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F203311C23A7AD0300F24BD5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F203311E23A7AD0300F24BD5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F203312123A7AD0300F24BD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F203312323A7AD0300F24BD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +58,14 @@
 		F203313823A7AD0300F24BD5 /* WebFilmChallangeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebFilmChallangeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F203313C23A7AD0300F24BD5 /* WebFilmChallangeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebFilmChallangeUITests.swift; sourceTree = "<group>"; };
 		F203313E23A7AD0300F24BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F203314B23A7ADFC00F24BD5 /* WebFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebFilm.swift; sourceTree = "<group>"; };
+		F203314D23A7C34C00F24BD5 /* WebFilmProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebFilmProxy.swift; sourceTree = "<group>"; };
+		F203315023A7C95200F24BD5 /* URLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
+		F203315223A7C97600F24BD5 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		F2D8080B23AA6A21005523D5 /* FilmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListViewController.swift; sourceTree = "<group>"; };
+		F2D8080F23AA6A74005523D5 /* FilmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListView.swift; sourceTree = "<group>"; };
+		F2D8081623AA7550005523D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F2D8081823AA75A7005523D5 /* FilmListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +116,18 @@
 		F203311923A7AD0300F24BD5 /* WebFilmChallange */ = {
 			isa = PBXGroup;
 			children = (
+				F2D8081523AA7550005523D5 /* Localizable.strings */,
+				F2D8080723AA69B0005523D5 /* View */,
+				F2D8080823AA69BC005523D5 /* ViewController */,
+				F203314A23A7AD6300F24BD5 /* Model */,
+				F203314F23A7C90E00F24BD5 /* Utils */,
 				F203311A23A7AD0300F24BD5 /* AppDelegate.swift */,
-				F203311C23A7AD0300F24BD5 /* SceneDelegate.swift */,
 				F203311E23A7AD0300F24BD5 /* ViewController.swift */,
 				F203312023A7AD0300F24BD5 /* Main.storyboard */,
 				F203312323A7AD0300F24BD5 /* Assets.xcassets */,
 				F203312523A7AD0300F24BD5 /* LaunchScreen.storyboard */,
 				F203312823A7AD0300F24BD5 /* Info.plist */,
+				F203315223A7C97600F24BD5 /* AppConstants.swift */,
 			);
 			path = WebFilmChallange;
 			sourceTree = "<group>";
@@ -126,6 +148,40 @@
 				F203313E23A7AD0300F24BD5 /* Info.plist */,
 			);
 			path = WebFilmChallangeUITests;
+			sourceTree = "<group>";
+		};
+		F203314A23A7AD6300F24BD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F203314B23A7ADFC00F24BD5 /* WebFilm.swift */,
+				F203314D23A7C34C00F24BD5 /* WebFilmProxy.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F203314F23A7C90E00F24BD5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F203315023A7C95200F24BD5 /* URLHelper.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F2D8080723AA69B0005523D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F2D8080F23AA6A74005523D5 /* FilmListView.swift */,
+				F2D8081823AA75A7005523D5 /* FilmListTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F2D8080823AA69BC005523D5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F2D8080B23AA6A21005523D5 /* FilmListViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F203312723A7AD0300F24BD5 /* LaunchScreen.storyboard in Resources */,
+				F2D8081723AA7550005523D5 /* Localizable.strings in Resources */,
 				F203312423A7AD0300F24BD5 /* Assets.xcassets in Resources */,
 				F203312223A7AD0300F24BD5 /* Main.storyboard in Resources */,
 			);
@@ -242,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F203315723AA142600F24BD5 /* WebFilmProxy.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,9 +317,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2D8081923AA75A7005523D5 /* FilmListTableViewCell.swift in Sources */,
+				F2D8081023AA6A74005523D5 /* FilmListView.swift in Sources */,
 				F203311F23A7AD0300F24BD5 /* ViewController.swift in Sources */,
 				F203311B23A7AD0300F24BD5 /* AppDelegate.swift in Sources */,
-				F203311D23A7AD0300F24BD5 /* SceneDelegate.swift in Sources */,
+				F203314C23A7ADFC00F24BD5 /* WebFilm.swift in Sources */,
+				F203315123A7C95200F24BD5 /* URLHelper.swift in Sources */,
+				F2D8080C23AA6A21005523D5 /* FilmListViewController.swift in Sources */,
+				F203315323A7C97600F24BD5 /* AppConstants.swift in Sources */,
+				F203314E23A7C34C00F24BD5 /* WebFilmProxy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +334,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F203313223A7AD0300F24BD5 /* WebFilmChallangeTests.swift in Sources */,
+				F203315523AA141D00F24BD5 /* AppConstants.swift in Sources */,
+				F203315423AA13F500F24BD5 /* URLHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +379,14 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		F2D8081523AA7550005523D5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2D8081623AA7550005523D5 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -320,6 +394,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -366,7 +441,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -380,6 +455,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -420,7 +496,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

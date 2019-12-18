@@ -1,0 +1,13 @@
+/* 
+  Base.strings
+  WebFilmChallange
+
+  Created by Zespół ds Środowiska Pracy IT on 18/12/2019.
+  Copyright © 2019 Piotr Buczma. All rights reserved.
+*/
+
+
+
+"FILM_LIST_LBL_TITLE" = "List of films";
+
+"FILM_LIST_WINDOW_TITLE" = "Film list";
