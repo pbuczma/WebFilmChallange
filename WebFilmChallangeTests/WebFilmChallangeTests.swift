@@ -67,7 +67,7 @@ class WebFilmChallangeTests: XCTestCase {
         var webFilm: [WebFilm] = []
         var error: Error?
         
-        for i in 0...75{
+        for i in 0...67{
         
             print("processing page: \(i)")
             let expectation = self.expectation(description: "testGetNowPlayingFilm")
@@ -81,13 +81,13 @@ class WebFilmChallangeTests: XCTestCase {
             })
         
             waitForExpectations(timeout: 15, handler: nil)
-            print("count: \(webFilm.count)")
+            print("count: \(webFilm.count) \(webFilmProxy.hasNextNowPlayingFilm())")
             /*for film in webFilm{
                 print(film.title, film.backdropPath)
             }*/
             
             XCTAssertNil(error)
-            if i < 73{
+            if i < webFilmProxy.nowPayingTotalPages{
                 XCTAssertGreaterThan(webFilm.count, 0)
             }else{
                 XCTAssertEqual(webFilm.count, 0)
@@ -108,9 +108,9 @@ class WebFilmChallangeTests: XCTestCase {
         var webFilm: [WebFilm] = []
         var error: Error?
         
-        let query = "Turtle Odyssey"  //"odyssey"
+        var query = "odysse"  //"odyssey"
         
-        for i in 0...20 {
+        for i in 0...11 {
         
             let expectation = self.expectation(description: "testGetSearchMovie")
             webFilmProxy.nextSearchMovieFilm(query: query) { (_webFilm, _error) in
@@ -118,6 +118,10 @@ class WebFilmChallangeTests: XCTestCase {
                 webFilm = _webFilm
                 error = _error
                 expectation.fulfill()
+            }
+            
+            if i == 5 {
+                query = "odyssey"
             }
             
             waitForExpectations(timeout: 15, handler: nil)
@@ -129,7 +133,7 @@ class WebFilmChallangeTests: XCTestCase {
             }*/
             
             
-            if i < 1{
+            if i < 11{
                 XCTAssertGreaterThan(webFilm.count, 0)
             }else{
                 XCTAssertEqual(webFilm.count, 0)

@@ -16,6 +16,20 @@ class FilmListTableViewCell: UITableViewCell {
     var lblTitle: UILabel!
     var btnFavourite: UIButton!
     var stkView: UIStackView!
+    var delegate: FilmWebProtocol?
+    
+    var webFilm: WebFilm?{
+        didSet{
+            
+            if webFilm != nil {
+                lblTitle.text = webFilm?.title
+            }else{
+                lblTitle.text = nil
+                delegate?.emptyValueAppeared()
+            }
+        }
+        
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -67,6 +81,16 @@ class FilmListTableViewCell: UITableViewCell {
         btnFavourite.setImage(UIImage(named: "star-empty"), for: .normal)
         btnFavourite.setImage(UIImage(named: "start-filled"), for: .selected)
         
+        stkView.alignment = .center
+        stkView.distribution = .fill
+        stkView.spacing = 0
+        
+        
+        self.preservesSuperviewLayoutMargins = false
+        self.separatorInset = UIEdgeInsets.zero
+        self.layoutMargins = UIEdgeInsets.zero
+
+        
     }
     
     
@@ -81,9 +105,12 @@ class FilmListTableViewCell: UITableViewCell {
     
     private func setUIConstraint(){
         
+        
+        contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: AppConstants.LIST_FILM_CELL_HEIGTH).isActive = true
+        
         stkView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0).isActive = true
-        stkView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 0).isActive = true
-        stkView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: 0).isActive = true
+        stkView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 10).isActive = true
+        stkView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -10).isActive = true
         stkView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0).isActive = true
         
         

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F203311B23A7AD0300F24BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203311A23A7AD0300F24BD5 /* AppDelegate.swift */; };
-		F203311F23A7AD0300F24BD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203311E23A7AD0300F24BD5 /* ViewController.swift */; };
 		F203312223A7AD0300F24BD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F203312023A7AD0300F24BD5 /* Main.storyboard */; };
 		F203312423A7AD0300F24BD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F203312323A7AD0300F24BD5 /* Assets.xcassets */; };
 		F203312723A7AD0300F24BD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F203312523A7AD0300F24BD5 /* LaunchScreen.storyboard */; };
@@ -21,6 +20,9 @@
 		F203315423AA13F500F24BD5 /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203315023A7C95200F24BD5 /* URLHelper.swift */; };
 		F203315523AA141D00F24BD5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203315223A7C97600F24BD5 /* AppConstants.swift */; };
 		F203315723AA142600F24BD5 /* WebFilmProxy.swift in Resources */ = {isa = PBXBuildFile; fileRef = F203314D23A7C34C00F24BD5 /* WebFilmProxy.swift */; };
+		F2872ABC23AB79BF00A62BD3 /* FilmWebProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2872ABB23AB79BF00A62BD3 /* FilmWebProtocol.swift */; };
+		F2872ABE23ABC9F200A62BD3 /* FilmDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2872ABD23ABC9F200A62BD3 /* FilmDetailsView.swift */; };
+		F2872AC223ABCF3600A62BD3 /* FilmDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2872AC123ABCF3600A62BD3 /* FilmDetailsViewController.swift */; };
 		F2D8080C23AA6A21005523D5 /* FilmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8080B23AA6A21005523D5 /* FilmListViewController.swift */; };
 		F2D8081023AA6A74005523D5 /* FilmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8080F23AA6A74005523D5 /* FilmListView.swift */; };
 		F2D8081723AA7550005523D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2D8081523AA7550005523D5 /* Localizable.strings */; };
@@ -47,7 +49,6 @@
 /* Begin PBXFileReference section */
 		F203311723A7AD0300F24BD5 /* WebFilmChallange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebFilmChallange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F203311A23A7AD0300F24BD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F203311E23A7AD0300F24BD5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F203312123A7AD0300F24BD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F203312323A7AD0300F24BD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F203312623A7AD0300F24BD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,6 +63,9 @@
 		F203314D23A7C34C00F24BD5 /* WebFilmProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebFilmProxy.swift; sourceTree = "<group>"; };
 		F203315023A7C95200F24BD5 /* URLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
 		F203315223A7C97600F24BD5 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		F2872ABB23AB79BF00A62BD3 /* FilmWebProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmWebProtocol.swift; sourceTree = "<group>"; };
+		F2872ABD23ABC9F200A62BD3 /* FilmDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailsView.swift; sourceTree = "<group>"; };
+		F2872AC123ABCF3600A62BD3 /* FilmDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailsViewController.swift; sourceTree = "<group>"; };
 		F2D8080B23AA6A21005523D5 /* FilmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListViewController.swift; sourceTree = "<group>"; };
 		F2D8080F23AA6A74005523D5 /* FilmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListView.swift; sourceTree = "<group>"; };
 		F2D8081623AA7550005523D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -120,14 +124,14 @@
 				F2D8080723AA69B0005523D5 /* View */,
 				F2D8080823AA69BC005523D5 /* ViewController */,
 				F203314A23A7AD6300F24BD5 /* Model */,
+				F2872ABA23AB798400A62BD3 /* Protocol */,
 				F203314F23A7C90E00F24BD5 /* Utils */,
 				F203311A23A7AD0300F24BD5 /* AppDelegate.swift */,
-				F203311E23A7AD0300F24BD5 /* ViewController.swift */,
+				F203315223A7C97600F24BD5 /* AppConstants.swift */,
 				F203312023A7AD0300F24BD5 /* Main.storyboard */,
 				F203312323A7AD0300F24BD5 /* Assets.xcassets */,
 				F203312523A7AD0300F24BD5 /* LaunchScreen.storyboard */,
 				F203312823A7AD0300F24BD5 /* Info.plist */,
-				F203315223A7C97600F24BD5 /* AppConstants.swift */,
 			);
 			path = WebFilmChallange;
 			sourceTree = "<group>";
@@ -167,11 +171,20 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		F2872ABA23AB798400A62BD3 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F2872ABB23AB79BF00A62BD3 /* FilmWebProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		F2D8080723AA69B0005523D5 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				F2D8080F23AA6A74005523D5 /* FilmListView.swift */,
 				F2D8081823AA75A7005523D5 /* FilmListTableViewCell.swift */,
+				F2872ABD23ABC9F200A62BD3 /* FilmDetailsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				F2D8080B23AA6A21005523D5 /* FilmListViewController.swift */,
+				F2872AC123ABCF3600A62BD3 /* FilmDetailsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -318,10 +332,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2D8081923AA75A7005523D5 /* FilmListTableViewCell.swift in Sources */,
+				F2872ABE23ABC9F200A62BD3 /* FilmDetailsView.swift in Sources */,
 				F2D8081023AA6A74005523D5 /* FilmListView.swift in Sources */,
-				F203311F23A7AD0300F24BD5 /* ViewController.swift in Sources */,
 				F203311B23A7AD0300F24BD5 /* AppDelegate.swift in Sources */,
+				F2872ABC23AB79BF00A62BD3 /* FilmWebProtocol.swift in Sources */,
 				F203314C23A7ADFC00F24BD5 /* WebFilm.swift in Sources */,
+				F2872AC223ABCF3600A62BD3 /* FilmDetailsViewController.swift in Sources */,
 				F203315123A7C95200F24BD5 /* URLHelper.swift in Sources */,
 				F2D8080C23AA6A21005523D5 /* FilmListViewController.swift in Sources */,
 				F203315323A7C97600F24BD5 /* AppConstants.swift in Sources */,

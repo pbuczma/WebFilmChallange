@@ -33,10 +33,13 @@ class WebFilmProxy {
     var nowPlayingSemaphore = DispatchSemaphore(value: 1)
     var serachMovieSemaphore   = DispatchSemaphore(value: 1)
     
+    
+    
     var searchMovieQuery = ""{
         didSet{
-            //searchMoviePages.removeAll()
-            //searchMovieWebFilm.removeAll()
+            print("search query cleared")
+            searchMoviePages.removeAll()
+            searchMovieWebFilm.removeAll()
         }
     }
     
@@ -60,7 +63,6 @@ class WebFilmProxy {
         if  lastPage == nil {
             hasNext = true
         }else{
-            
             if lastPage! == nowPayingTotalPages {
                 hasNext = false
             }else{
@@ -135,7 +137,9 @@ class WebFilmProxy {
         
         var nextPage = 1
         
-        self.searchMovieQuery = query
+        if query != searchMovieQuery {
+            self.searchMovieQuery = query
+        }
         
         if !hasNextSearchMovie(){
             serachMovieSemaphore.signal()
@@ -165,6 +169,7 @@ class WebFilmProxy {
         var error: Error?
         
         
+        
         let urlString = URLHelper.urlForNowPalying(page: page)
         
         if urlString == nil {
@@ -182,18 +187,23 @@ class WebFilmProxy {
         let request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalCacheData , timeoutInterval: 6000)
         
         self.nowPlayingSemaphore.wait()
+    
         let task = urlSession.dataTask(with: request, completionHandler: { [weak self] (data, response, _error) in
         
             if error == nil{
                 do {
                     let queryResults = try self?.jsonDecoder.decode(WebFilmResults.self, from: data!)
                     if queryResults != nil {
-                        webFilm = queryResults!.results
+                        webFilm = queryResults!.results ?? webFilm
                         self?.nowPayingTotalPages = queryResults!.totalPages
                         let page = queryResults!.page
                         self?.nowPlayingPages.append(page)
                     }
                 }catch{
+                    //ading this page (from tha function argument) any way
+                    if page != nil {
+                        self?.nowPlayingPages.append(page!)
+                    }
                     print("WebFilmProxy-getNowPlayingFilm: \(error)")
                 }
             }else{
@@ -222,6 +232,8 @@ class WebFilmProxy {
         
         let url = URL(string: urlString!)
         
+        print( "getSearchMovie: \(urlString!)" )
+        
         if url == nil {
             error = WebFilmProxyError.URLCouldNotBeCreated
             completion(webFilm, error)
@@ -236,13 +248,17 @@ class WebFilmProxy {
                 do {
                     let queryResults = try self?.jsonDecoder.decode(WebFilmResults.self, from: data!)
                     if queryResults != nil {
-                        webFilm = queryResults!.results
+                        webFilm = queryResults!.results ?? webFilm
                         self?.searchMovieTotalPages  = queryResults!.totalPages
                         let page = queryResults!.page
                         self?.searchMoviePages.append(page)
+                        print( "totalPages: \(self?.searchMovieTotalPages)" )
                     }
                     
                 }catch{
+                    if page != nil {
+                        self?.searchMoviePages.append(page!)
+                    }
                     print("WebFilmProxy-getSearchMovie: \(error)")
                 }
             }else{

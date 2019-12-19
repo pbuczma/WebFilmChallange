@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 class AppConstants{
     
@@ -21,7 +21,8 @@ class AppConstants{
     static let URL_ATTRIBUTES: [String: String] = [ "api_key" : APP_KEY ]
     static let URL_QUERY_MIN_LENGTH = 3
     
+    static let LIST_FILM_CELL_HEIGTH: CGFloat = 55
     
-    
+    static let LIST_FILM_PAGE_TIME_INTERVAL = 0.5
     
 }

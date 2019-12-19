@@ -11,3 +11,10 @@
 "FILM_LIST_LBL_TITLE" = "List of films";
 
 "FILM_LIST_WINDOW_TITLE" = "Film list";
+
+
+"FILM_LIST_SEARCH_PLACEHOLDER" = "Enter film name";
+
+"FILM_LIST_SEARCH_BUTTON" = "Cancel";
+
+"FILM_DETAILS_WINDOW_TITLE" = "Details";

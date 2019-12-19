@@ -11,7 +11,7 @@ import Foundation
 
 struct WebFilmResults: Codable{
 
-    let results: [WebFilm]
+    let results: [WebFilm]?
     let page: Int
     let totalPages: Int
     
@@ -33,7 +33,7 @@ struct WebFilmResults: Codable{
     
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.results = try container.decode([WebFilm].self, forKey: .results)
+        self.results = try container.decodeIfPresent([WebFilm].self, forKey: .results)
         self.page    = try container.decode(Int.self, forKey: .page)
         self.totalPages = try container.decode(Int.self, forKey: .totalPages)
     }
@@ -49,8 +49,8 @@ struct WebFilm: Codable {
     let title: String
     let releaseDate: Date?
     let overview: String
-    let averageVote: Double
-    let backdropPath: String?
+    let averageVote: Double?
+    let posterPath: String?
         
     static let dateFormatter = { () -> DateFormatter in
         var dateFormatter = DateFormatter()
@@ -66,52 +66,79 @@ struct WebFilm: Codable {
         case releaseDate = "release_date"
         case overview = "overview"
         case averageVote = "vote_average"
-        case backdropPath = "backdrop_path"
+        case posterPath = "poster_path"
         
         
     }
     
     
-    init(id: Int, title: String, releaseDate: Date, overview: String, averageVote: Double, backdropPath: String? ){
+    init(id: Int, title: String, releaseDate: Date, overview: String, averageVote: Double, posterPath: String? ){
         
         self.id = id
         self.title = title
         self.releaseDate = releaseDate
         self.overview = overview
         self.averageVote = averageVote
-        self.backdropPath = backdropPath
+        self.posterPath = posterPath
     
     }
     
     init(from decoder: Decoder) throws {
-           
+        
+        
+        
         let container = try decoder.container(keyedBy: CodingKeys.self)
-    
-        let id = try container.decode(Int.self, forKey: .id)
-    
-        let title = try container.decode(String.self, forKey: .title)
-        
-        let overview = try container.decode(String.self, forKey: .overview)
-    
-        let backdropPath = try container.decodeIfPresent(String.self, forKey: .backdropPath)
-        
-        let averageVote = try container.decode(Double.self, forKey: .averageVote)
-        
-        let releaseDateString = try container.decodeIfPresent(String.self, forKey: .releaseDate)
-        
-        var releaseDate: Date?
-        
-        if releaseDateString != nil {
-            releaseDate = WebFilm.dateFormatter.date(from: releaseDateString!)
+            
+            
+        do{
+            self.id = try container.decode(Int.self, forKey: .id)
+        }catch DecodingError.typeMismatch{
+            throw DecodingError.typeMismatch(WebFilm.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Encoded id not of an expected type for 'id'"))
         }
-           
-        self.id = id
-        self.title = title
-        self.overview = overview
-        self.averageVote = averageVote
-        self.backdropPath = backdropPath
-        self.releaseDate = releaseDate
-   
+            
+        
+        do {
+    
+            self.title = try container.decode(String.self, forKey: .title)
+        }catch DecodingError.typeMismatch{
+            throw DecodingError.typeMismatch(WebFilm.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Encoded id not of an expected type for 'title'"))
+        }
+        
+        do{
+        
+            let releaseDateString = try container.decodeIfPresent(String.self, forKey: .releaseDate)
+            
+            if releaseDateString != nil {
+                self.releaseDate = WebFilm.dateFormatter.date(from: releaseDateString!)
+            }else{
+                throw DecodingError.typeMismatch(WebFilm.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Encoded id not of an expected type for 'releaseDate'"))
+            }
+            
+        }catch DecodingError.typeMismatch{
+            throw DecodingError.typeMismatch(WebFilm.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Encoded id not of an expected type for 'releaseDate'"))
+        }
+        
+        
+        do {
+            self.overview = try container.decode(String.self, forKey: .overview)
+        }catch DecodingError.typeMismatch{
+            throw DecodingError.typeMismatch(WebFilm.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Encoded id not of an expected type for 'overview'"))
+        }
+    
+        do{
+            self.posterPath = try container.decodeIfPresent(String.self, forKey: .posterPath)
+        }catch DecodingError.typeMismatch{
+            throw DecodingError.typeMismatch(WebFilm.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Encoded id not of an expected type for 'posterPath'"))
+        }
+        
+        
+        
+        do{
+            self.averageVote = try container.decodeIfPresent(Double.self, forKey: .averageVote) ?? 0.0
+        }catch DecodingError.typeMismatch{
+            throw DecodingError.typeMismatch(WebFilm.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Encoded id not of an expected type for 'averageVote'"))
+        }
+    
     }
      
 }
