@@ -19,10 +19,10 @@
 		F203315323A7C97600F24BD5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203315223A7C97600F24BD5 /* AppConstants.swift */; };
 		F203315423AA13F500F24BD5 /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203315023A7C95200F24BD5 /* URLHelper.swift */; };
 		F203315523AA141D00F24BD5 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203315223A7C97600F24BD5 /* AppConstants.swift */; };
-		F203315723AA142600F24BD5 /* WebFilmProxy.swift in Resources */ = {isa = PBXBuildFile; fileRef = F203314D23A7C34C00F24BD5 /* WebFilmProxy.swift */; };
 		F2872ABC23AB79BF00A62BD3 /* FilmWebProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2872ABB23AB79BF00A62BD3 /* FilmWebProtocol.swift */; };
 		F2872ABE23ABC9F200A62BD3 /* FilmDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2872ABD23ABC9F200A62BD3 /* FilmDetailsView.swift */; };
 		F2872AC223ABCF3600A62BD3 /* FilmDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2872AC123ABCF3600A62BD3 /* FilmDetailsViewController.swift */; };
+		F2872AC423ACE65900A62BD3 /* FavouriteWebFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2872AC323ACE65900A62BD3 /* FavouriteWebFilm.swift */; };
 		F2D8080C23AA6A21005523D5 /* FilmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8080B23AA6A21005523D5 /* FilmListViewController.swift */; };
 		F2D8081023AA6A74005523D5 /* FilmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D8080F23AA6A74005523D5 /* FilmListView.swift */; };
 		F2D8081723AA7550005523D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2D8081523AA7550005523D5 /* Localizable.strings */; };
@@ -66,6 +66,7 @@
 		F2872ABB23AB79BF00A62BD3 /* FilmWebProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmWebProtocol.swift; sourceTree = "<group>"; };
 		F2872ABD23ABC9F200A62BD3 /* FilmDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailsView.swift; sourceTree = "<group>"; };
 		F2872AC123ABCF3600A62BD3 /* FilmDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailsViewController.swift; sourceTree = "<group>"; };
+		F2872AC323ACE65900A62BD3 /* FavouriteWebFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteWebFilm.swift; sourceTree = "<group>"; };
 		F2D8080B23AA6A21005523D5 /* FilmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListViewController.swift; sourceTree = "<group>"; };
 		F2D8080F23AA6A74005523D5 /* FilmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListView.swift; sourceTree = "<group>"; };
 		F2D8081623AA7550005523D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -159,6 +160,7 @@
 			children = (
 				F203314B23A7ADFC00F24BD5 /* WebFilm.swift */,
 				F203314D23A7C34C00F24BD5 /* WebFilmProxy.swift */,
+				F2872AC323ACE65900A62BD3 /* FavouriteWebFilm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,7 +315,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F203315723AA142600F24BD5 /* WebFilmProxy.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2872AC423ACE65900A62BD3 /* FavouriteWebFilm.swift in Sources */,
 				F2D8081923AA75A7005523D5 /* FilmListTableViewCell.swift in Sources */,
 				F2872ABE23ABC9F200A62BD3 /* FilmDetailsView.swift in Sources */,
 				F2D8081023AA6A74005523D5 /* FilmListView.swift in Sources */,

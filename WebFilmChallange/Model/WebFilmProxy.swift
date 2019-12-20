@@ -33,7 +33,7 @@ class WebFilmProxy {
     var nowPlayingSemaphore = DispatchSemaphore(value: 1)
     var serachMovieSemaphore   = DispatchSemaphore(value: 1)
     
-    
+    let favouriteWebFilm: FavouriteWebFilm!
     
     var searchMovieQuery = ""{
         didSet{
@@ -48,6 +48,8 @@ class WebFilmProxy {
     init( urlSession: URLSession ){
         
         self.urlSession = urlSession
+        
+        favouriteWebFilm = FavouriteWebFilm.loadFavourite() ?? FavouriteWebFilm(favourite: [] )
         
     }
 
@@ -125,8 +127,12 @@ class WebFilmProxy {
         nowPlayingSemaphore.signal()
         
         return getNowPlayingFilm(page: nextPage) { [weak self] (_webFilm, _error) in
-            self?.nowPlayingWebFilm.append(contentsOf: _webFilm)
-            completion(_webFilm, _error)
+            
+            guard let self = self else {return}
+            
+            let favWebFilm = self.favouriteWebFilm.getFavourite(webFilm: _webFilm)
+            self.nowPlayingWebFilm.append(contentsOf: favWebFilm)
+            completion(favWebFilm, _error)
         }
     
     
@@ -155,13 +161,30 @@ class WebFilmProxy {
         serachMovieSemaphore.signal()
         
         return getSearchMovie(query: query, page: nextPage) { [weak self] (_webFilm, _error) in
-            self?.searchMovieWebFilm.append(contentsOf: _webFilm)
-            completion(_webFilm, _error)
+            
+            guard let self = self else {return}
+                       
+            let favWebFilm = self.favouriteWebFilm.getFavourite(webFilm: _webFilm)
+            
+            self.searchMovieWebFilm.append(contentsOf: favWebFilm)
+            completion(favWebFilm, _error)
         }
         
     }
     
     
+    func modifyFavouriteFilm( aFilm: WebFilm ){
+        
+        favouriteWebFilm.modifyFavourite(webFilm: aFilm)
+        saveFavouriteFilm()
+        
+    }
+    
+    func saveFavouriteFilm(){
+        
+        FavouriteWebFilm.saveFavourite(appRights: self.favouriteWebFilm)
+        
+    }
     
     private func getNowPlayingFilm( page: Int?, completion: @escaping( _ webFilm: [WebFilm], _ error: Error? ) -> Void ) -> Void {
         

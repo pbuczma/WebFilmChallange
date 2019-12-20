@@ -14,6 +14,8 @@ protocol FilmWebProtocol{
     
     func emptyValueAppeared()
     
+    func setFavourite(aWebFilm: WebFilm)
+    
     
     
 }

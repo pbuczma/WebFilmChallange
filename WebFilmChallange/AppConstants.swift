@@ -21,8 +21,15 @@ class AppConstants{
     static let URL_ATTRIBUTES: [String: String] = [ "api_key" : APP_KEY ]
     static let URL_QUERY_MIN_LENGTH = 3
     
+    static let URL_IMG_HOST    = "image.tmdb.org"
+    static let URL_IMG_QUERY   = "/t/p/w500"
+    
+    
     static let LIST_FILM_CELL_HEIGTH: CGFloat = 55
     
     static let LIST_FILM_PAGE_TIME_INTERVAL = 0.5
+    
+    static let FILM_DETAILS_IMG_VIEW_WIDTH: CGFloat = 200
+    static let FILM_DETAILS_IMG_VIEW_HEIGTH: CGFloat = 300
     
 }

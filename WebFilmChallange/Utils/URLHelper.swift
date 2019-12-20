@@ -64,5 +64,16 @@ class URLHelper {
     }
     
     
+    static func posterURL( posterSuffix: String ) -> String? {
+        
+        var urlComponents = URLComponents()
+        urlComponents.scheme = AppConstants.ULR_SCHEMA
+        urlComponents.host = AppConstants.URL_IMG_HOST
+        urlComponents.path = AppConstants.URL_IMG_QUERY + posterSuffix
+        
+        return urlComponents.url?.absoluteString
+    
+    }
+    
     
 }

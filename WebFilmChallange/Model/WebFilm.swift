@@ -51,6 +51,7 @@ struct WebFilm: Codable {
     let overview: String
     let averageVote: Double?
     let posterPath: String?
+    var favourie = false
         
     static let dateFormatter = { () -> DateFormatter in
         var dateFormatter = DateFormatter()
@@ -72,7 +73,7 @@ struct WebFilm: Codable {
     }
     
     
-    init(id: Int, title: String, releaseDate: Date, overview: String, averageVote: Double, posterPath: String? ){
+    init(id: Int, title: String, releaseDate: Date, overview: String, averageVote: Double, posterPath: String?){
         
         self.id = id
         self.title = title
@@ -143,3 +144,10 @@ struct WebFilm: Codable {
      
 }
          
+extension WebFilm: Equatable {
+    
+    static func ==(lhs: WebFilm, rhs: WebFilm) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+}

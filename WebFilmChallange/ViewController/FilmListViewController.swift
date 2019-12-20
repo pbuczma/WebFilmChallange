@@ -129,13 +129,29 @@ class FilmListViewController: UIViewController {
        myView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
        
    }
+   
     
+    func backToNowPlayingFilm(){
+        
+        isFilmQuery = false
+        webFilm.removeAll()
+        webFilm.append(contentsOf: webFilmProxy.nowPlayingWebFilm)
+        loadNowPlayingFilm()
+        
+        guard let visibleRows = filmList.tblList.indexPathsForVisibleRows, let row = visibleRows.first else{
+            return
+        }
+        
+        filmList.tblList.scrollToRow(at: row, at: .top, animated: true)
+        
+    }
     
-    
-
 }
 
+    
+
 extension FilmListViewController: FilmWebProtocol {
+    
     
     
     func emptyValueAppeared() {
@@ -147,6 +163,19 @@ extension FilmListViewController: FilmWebProtocol {
         }
     }
     
+    
+    func setFavourite(aWebFilm: WebFilm) {
+        
+        guard let index = webFilm.firstIndex(of: aWebFilm) else {return}
+        
+        webFilm[index].favourie = aWebFilm.favourie
+        
+        filmList.tblList.reloadData()
+        
+        
+        webFilmProxy.modifyFavouriteFilm(aFilm: webFilm[index] )
+        
+    }
     
 }
 
@@ -200,8 +229,8 @@ extension FilmListViewController: UITableViewDelegate {
         let filmDetails = FilmDetailsViewController()
         
         filmDetails.webFilm = self.webFilm[ indexPath.row ]
+        filmDetails.delegate = self
         
-
         self.navigationController?.pushViewController(filmDetails, animated: true)
         
         
@@ -229,6 +258,8 @@ extension FilmListViewController: UISearchResultsUpdating{
             isFilmQuery = true
             loadSearchMovie(query: query)
             
+        }else{
+            backToNowPlayingFilm()
         }
         
     }
@@ -260,11 +291,7 @@ extension FilmListViewController: UISearchBarDelegate {
         print("cancel button clicked")
         //self.close()
         
-        isFilmQuery = false
-        webFilm.removeAll()
-        webFilm.append(contentsOf: webFilmProxy.nowPlayingWebFilm)
-        loadNowPlayingFilm()
-        filmList.tblList.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        backToNowPlayingFilm()
         
     }
     

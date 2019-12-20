@@ -18,3 +18,7 @@
 "FILM_LIST_SEARCH_BUTTON" = "Cancel";
 
 "FILM_DETAILS_WINDOW_TITLE" = "Details";
+
+"FILM_DETAILS_WINDOW_RELEASE" = "Release: ";
+"FILM_DETAILS_WINDOW_VOTE"    = "User score: ";
+
