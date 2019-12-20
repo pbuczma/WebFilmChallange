@@ -12,7 +12,7 @@ class FilmListTableViewCell: UITableViewCell {
 
     static let CELLID = "ListFilmTableViewCell"
     
-    
+    var spinnerView: UIActivityIndicatorView!
     var lblTitle: UILabel!
     var btnFavourite: UIButton!
     var stkView: UIStackView!
@@ -24,9 +24,11 @@ class FilmListTableViewCell: UITableViewCell {
             if webFilm != nil {
                 lblTitle.text = webFilm!.title
                 btnFavourite.isSelected = webFilm!.favourie
+                setSpinnerStatus(active: false)
             }else{
                 lblTitle.text = nil
                 delegate?.emptyValueAppeared()
+                setSpinnerStatus(active: true)
             }
         }
         
@@ -36,10 +38,11 @@ class FilmListTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setUIProperties()
+        setSpinnerProperties()
         addUIControlsToView()
         
         setUIConstraint()
-         
+        
         selectionStyle = .none
         
         btnFavourite.addTarget(self, action: #selector(favouriteButtonPressed(_:)), for: .touchUpInside)
@@ -70,7 +73,7 @@ class FilmListTableViewCell: UITableViewCell {
         self.lblTitle      = UILabel()
         self.btnFavourite  = UIButton()
         self.stkView       = UIStackView()
-        
+        self.spinnerView   = UIActivityIndicatorView()
         
         lblTitle.translatesAutoresizingMaskIntoConstraints = false
         btnFavourite.translatesAutoresizingMaskIntoConstraints = false
@@ -95,6 +98,15 @@ class FilmListTableViewCell: UITableViewCell {
         
     }
     
+    private func setSpinnerProperties(){
+        
+        spinnerView?.hidesWhenStopped = true
+        spinnerView?.style = UIActivityIndicatorView.Style.gray
+        spinnerView?.isHidden = true
+        spinnerView?.translatesAutoresizingMaskIntoConstraints = false
+
+    }
+    
     
     private func addUIControlsToView() {
         
@@ -102,6 +114,7 @@ class FilmListTableViewCell: UITableViewCell {
         stkView.addArrangedSubview(btnFavourite)
         
         self.contentView.addSubview(stkView)
+        self.contentView.addSubview(spinnerView)
     }
     
     
@@ -119,6 +132,8 @@ class FilmListTableViewCell: UITableViewCell {
         btnFavourite.widthAnchor.constraint(equalToConstant: btnFavourite.intrinsicContentSize.width).isActive = true
         btnFavourite.heightAnchor.constraint(equalToConstant: btnFavourite.intrinsicContentSize.height).isActive = true
         
+        spinnerView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
+        spinnerView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
     }
     
     
@@ -130,59 +145,28 @@ class FilmListTableViewCell: UITableViewCell {
         }
     }
     
+    func setSpinnerStatus( active: Bool){
+        
+        if active {
+            UIView.animate(withDuration: 0, animations: {
+                DispatchQueue.main.async {
+                    self.spinnerView.isHidden = false
+                    self.spinnerView.startAnimating()
+                    self.setNeedsLayout()
+                }
+            })
+            
+        }else{
+            DispatchQueue.main.async {
+                self.spinnerView.stopAnimating()
+                self.spinnerView.isHidden = true
+                self.setNeedsLayout()
+            }
+            
+        }
+        
     
+    }
     
     
 }
-
-
-
-/*
- 
- 
-     
-         self.stkStack.alignment = .center
-         self.stkStack.distribution = .fillEqually
-         self.stkStack.spacing = AppConstants.LIST_ARCHIVE_DETAILS_CELL_SPAN
-         
- var spinnerView: UIActivityIndicatorView?
- 
- 
-   
- func setSpinnerStatus( active: Bool){
-     
-     if active {
-         UIView.animate(withDuration: 0, animations: {
-             DispatchQueue.main.async {
-                 self.spinnerView?.isHidden = false
-                 self.spinnerView?.startAnimating()
-                 self.setNeedsLayout()
-             }
-         })
-         //print( "starting: \(self.spinnerView?.frame) \(self.spinnerView?.isHidden)" )
-     }else{
-         DispatchQueue.main.async {
-             self.spinnerView?.stopAnimating()
-             self.spinnerView?.isHidden = true
-             self.setNeedsLayout()
-         }
-         //print( "stopping \(self.spinnerView?.frame) \(self.spinnerView?.isHidden)" )
-     }
-     
- 
- }
- 
- 
- 
- private func setSpinnerProperties(){
-     
-     spinnerView?.hidesWhenStopped = true
-     spinnerView?.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-     spinnerView?.isHidden = true
-     spinnerView?.transform = CGAffineTransform(scaleX: 3.0, y: 3.0)
-     spinnerView?.translatesAutoresizingMaskIntoConstraints = false
-
- }
- 
- 
- */

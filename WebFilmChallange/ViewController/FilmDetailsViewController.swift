@@ -133,7 +133,6 @@ class FilmDetailsViewController: UIViewController {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, error == nil else { return }
             
-            print("Download Finished")
             DispatchQueue.main.async() {
                 self.filmDetails.viewPoster.image = UIImage(data: data)
             }

@@ -35,7 +35,7 @@ class FilmListViewController: UIViewController {
         filmList.tblList.dataSource = self
         filmList.tblList.delegate = self
         
-        let urlSession = URLSession(configuration: .default)
+        let urlSession = URLSession.shared
         webFilmProxy = WebFilmProxy(urlSession: urlSession)
         
         loadNowPlayingFilm()
@@ -100,7 +100,6 @@ class FilmListViewController: UIViewController {
             
             self?.webFilm.append(contentsOf: _webFilm)
             DispatchQueue.main.async { [weak self] in
-                print("number of records: \(_webFilm.count)")
                 guard let self = self else { return }
                 self.hasNextPage = self.webFilmProxy.hasNextSearchMovie()
                 self.reloadTable()
@@ -135,15 +134,14 @@ class FilmListViewController: UIViewController {
         
         isFilmQuery = false
         webFilm.removeAll()
-        webFilm.append(contentsOf: webFilmProxy.nowPlayingWebFilm)
+        webFilm.append(contentsOf: webFilmProxy.nowPLayingSoFarLoaded() )
         loadNowPlayingFilm()
         
-        guard let visibleRows = filmList.tblList.indexPathsForVisibleRows, let row = visibleRows.first else{
-            return
+        
+        if filmList.tblList.numberOfRows(inSection: 0) > 0{
+        
+            filmList.tblList.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
         }
-        
-        filmList.tblList.scrollToRow(at: row, at: .top, animated: true)
-        
     }
     
 }
@@ -252,7 +250,6 @@ extension FilmListViewController: UISearchResultsUpdating{
         
         let query = strippedString
         
-        print("query: \(query)")
         
         if query.count > 0 {
             isFilmQuery = true
@@ -266,7 +263,6 @@ extension FilmListViewController: UISearchResultsUpdating{
     
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        print("editing")
         
         let visibleRow = filmList.tblList.indexPathsForVisibleRows
             
@@ -288,9 +284,6 @@ extension FilmListViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
-        print("cancel button clicked")
-        //self.close()
-        
         backToNowPlayingFilm()
         
     }
@@ -298,3 +291,5 @@ extension FilmListViewController: UISearchBarDelegate {
     
     
 }
+
+

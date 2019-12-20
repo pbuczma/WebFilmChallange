@@ -21,23 +21,24 @@ class WebFilmProxy {
     
     let urlSession: URLSession
 
-    let jsonDecoder = JSONDecoder()
-    var urlSessionTasks: [URLSessionTask] = []
+    private let jsonDecoder = JSONDecoder()
+    private var urlSessionTasks: [URLSessionTask] = []
+    private var nowPlayingWebFilm: [WebFilm] = []
+    private var searchMovieWebFilm: [WebFilm] = []
+    private var nowPlayingSemaphore = DispatchSemaphore(value: 1)
+    private var serachMovieSemaphore   = DispatchSemaphore(value: 1)
+    
     var nowPlayingPages: [Int] = []
     var searchMoviePages: [Int] = []
     var nowPayingTotalPages = 1
     var searchMovieTotalPages = 1
-    var nowPlayingWebFilm: [WebFilm] = []
-    var searchMovieWebFilm: [WebFilm] = []
     
-    var nowPlayingSemaphore = DispatchSemaphore(value: 1)
-    var serachMovieSemaphore   = DispatchSemaphore(value: 1)
+
     
     let favouriteWebFilm: FavouriteWebFilm!
     
     var searchMovieQuery = ""{
         didSet{
-            print("search query cleared")
             searchMoviePages.removeAll()
             searchMovieWebFilm.removeAll()
         }
@@ -104,7 +105,9 @@ class WebFilmProxy {
         return hasNext
     }
     
-    
+    func nowPLayingSoFarLoaded() -> [WebFilm]{
+        return nowPlayingWebFilm
+    }
     
     
     /* if last page is return function returns false */
@@ -223,7 +226,7 @@ class WebFilmProxy {
                         self?.nowPlayingPages.append(page)
                     }
                 }catch{
-                    //ading this page (from tha function argument) any way
+                    //ading this page (from the function argument) any way
                     if page != nil {
                         self?.nowPlayingPages.append(page!)
                     }
@@ -255,7 +258,6 @@ class WebFilmProxy {
         
         let url = URL(string: urlString!)
         
-        print( "getSearchMovie: \(urlString!)" )
         
         if url == nil {
             error = WebFilmProxyError.URLCouldNotBeCreated
@@ -275,7 +277,7 @@ class WebFilmProxy {
                         self?.searchMovieTotalPages  = queryResults!.totalPages
                         let page = queryResults!.page
                         self?.searchMoviePages.append(page)
-                        print( "totalPages: \(self?.searchMovieTotalPages)" )
+                        
                     }
                     
                 }catch{
